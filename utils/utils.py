@@ -29,7 +29,7 @@ def validate(policy: Union[OptionPolicy, Policy], sa_array):
 
 
 def reward_validate(agent, policy: Union[OptionPolicy, Policy], n_sample=-8, do_print=True):
-    trajs = agent.collect(policy.state_dict(), n_sample, fixed=True)
+    trajs = agent.collect(policy.state_dict(), n_sample, fixed=False)
     rsums = [tr[-1].sum().item() for tr in trajs]
     steps = [tr[-1].size(0) for tr in trajs]
     if isinstance(policy, OptionPolicy):
