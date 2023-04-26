@@ -23,7 +23,7 @@ class Discriminator(torch.nn.Module):
         d = self.discriminator(torch.cat((s, a), dim=-1))
         return d
 
-    def gradient_penalty(self, s, a, lam=10.):
+    def gradient_penalty(self, s, a, lam=20.):
         sa = torch.cat((s, a), dim=-1).requires_grad_()
         d = self.discriminator(sa)
 
